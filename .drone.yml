@@ -1,0 +1,16 @@
+kind: pipeline
+name: default
+
+steps:
+- name: docker publish
+  image: plugins/docker
+  settings:
+    repo: ferdavs/drone-nomad
+    dockerfile: docker/Dockerfile.alpine
+    tags:
+      - '1.0'
+      - 'plugins/nomad'
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
